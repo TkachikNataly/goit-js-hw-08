@@ -30,5 +30,5 @@ const lightbox = new SimpleLightbox('.gallery a');
 
 lightbox.on('show.simplelightbox', () => {
   lightbox.options.captionsData = 'alt';
-  lightbox.options.captionDelay = '250';
+  lightbox.options.captionDelay = '350';
 });
