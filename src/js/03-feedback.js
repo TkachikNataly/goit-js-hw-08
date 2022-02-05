@@ -15,19 +15,22 @@ refs.form.addEventListener('input', throttle(FormInput, 500));
 
 populateTextArea();
 
+function FormInput(event) {
+  localObject = {
+    email: refs.email.value,
+    message: refs.textarea.value,
+  }
+  console.log('~ message', localObject);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(localObject));
+}
+
 function FormSubmit(event) {
   event.preventDefault();
-  console.log('отправка формы');
+  console.log('отправка формы', JSON.parse(localStorage.getItem(STORAGE_KEY)));
   event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 
   // console.log(localObject);
-}
-
-function FormInput(event) {
-  localObject[event.target.name] = event.target.value;
-  // console.log('~ message', localObject);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(localObject));
 }
 
 function populateTextArea() {
